@@ -164,6 +164,21 @@ engineer-portfolio/
 
 ---
 
+## 🚧 公開前に差し替える項目
+
+未確定のデータは「非表示 / 準備中」で安全に動作します。以下が揃い次第、該当ファイルへ追記すると自動的に表示されます。
+
+| 項目 | 場所 | 補足 |
+|------|------|------|
+| **サイトURL** `site.url` | `content/site.ts` | Vercel公開後の本番URLへ差し替え（OGP / sitemap / canonical / JSON-LD に反映。**必須**） |
+| **メール** `site.email` | `content/site.ts` | optional。設定すると Contact / JSON-LD に表示。未設定なら非表示 |
+| **GitHub URL** `project.github` | `content/projects.ts` | 各プロジェクトに設定すると GitHub ボタンを表示 |
+| **SNS URL / ハンドル** `socialProfiles` | `content/articles.ts` | X / LinkedIn / note / GitHub。追加でフォロー行・Footer・Contact に表示 |
+| **記事URL** `articles` | `content/articles.ts` | 実記事を追加するとカード表示。空のあいだは「準備中」表示 |
+| **Resend 環境変数** | Vercel の環境変数 | `RESEND_API_KEY` / `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL`。未設定時はフォームがモック動作 |
+
+---
+
 ## 📄 ライセンス
 
 個人のポートフォリオサイトです。コード構成は自由に参考にしていただけますが、氏名・経歴・実績・掲載文章などのコンテンツの転用はご遠慮ください。

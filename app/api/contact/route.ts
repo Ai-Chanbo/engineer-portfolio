@@ -49,9 +49,19 @@ export async function POST(request: Request) {
     return Response.json({ ok: true, mock: true });
   }
 
+  const to = process.env.CONTACT_TO_EMAIL ?? site.email;
+  if (!to) {
+    console.error(
+      "[contact] no destination address (set CONTACT_TO_EMAIL or site.email)",
+    );
+    return Response.json(
+      { ok: false, error: "送信先が未設定です。時間をおいて再度お試しください。" },
+      { status: 500 },
+    );
+  }
+
   try {
     const resend = new Resend(apiKey);
-    const to = process.env.CONTACT_TO_EMAIL ?? site.email;
     const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 
     const { error } = await resend.emails.send({

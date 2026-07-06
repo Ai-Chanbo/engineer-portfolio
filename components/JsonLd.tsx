@@ -16,12 +16,14 @@ export function JsonLd() {
         jobTitle: site.role,
         description: site.description,
         url: site.url,
-        email: `mailto:${site.email}`,
+        ...(site.email ? { email: `mailto:${site.email}` } : {}),
         address: {
           "@type": "PostalAddress",
           addressCountry: site.location,
         },
-        sameAs: socialProfiles.map((p) => p.url),
+        ...(socialProfiles.length
+          ? { sameAs: socialProfiles.map((p) => p.url) }
+          : {}),
         knowsAbout: [
           "C#",
           ".NET",

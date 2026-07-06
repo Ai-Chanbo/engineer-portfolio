@@ -93,7 +93,8 @@ export function Profile() {
             </div>
           </div>
 
-          {/* Certifications */}
+          {/* Certifications — hidden while none are listed */}
+          {certifications.length > 0 && (
           <div>
             <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-subtle">
               Certifications
@@ -118,6 +119,7 @@ export function Profile() {
               ))}
             </div>
           </div>
+          )}
         </div>
       </div>
     </section>

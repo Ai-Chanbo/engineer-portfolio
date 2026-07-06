@@ -2,29 +2,42 @@
  * Central site identity & metadata.
  * Placeholder values — replace name / handles / URL before publishing.
  */
-export const site = {
-  name: "玉置 大和",
+type SiteConfig = {
+  name: string;
   /** Short latin wordmark shown in the header. */
+  wordmark: string;
+  role: string;
+  /** One-line role summary shown as the hero eyebrow. */
+  tagline: string;
+  /** Hero headline (impact copy). */
+  headline: { lead: string; highlight: string };
+  /** Hero supporting sentence. */
+  description: string;
+  url: string;
+  /** Optional — omitted when not yet provided; hidden everywhere it would show. */
+  email?: string;
+  location: string;
+  /** Availability flag shown in the hero badge. */
+  available: boolean;
+};
+
+export const site: SiteConfig = {
+  name: "玉置 大和",
   wordmark: "YAMATO TAMAKI",
   role: "Manufacturing DX Engineer",
-  /** One-line role summary shown as the hero eyebrow. */
   tagline: "製造業 × システム開発 × AI",
-  /** Hero headline (impact copy). */
   headline: {
     lead: "現場の課題を、",
     highlight: "技術で解く。",
   },
-  /** Hero supporting sentence. */
   description:
     "工場保全11年の現場経験を土台に、C#・PLC・Azure・AIを活用して、製造業のDXと業務改善を支援するエンジニアです。",
-  // TODO: 本番ドメイン確定後に差し替え
+  // TODO(#7): Vercel公開後に本番URLへ差し替え（OGP/sitemap/canonical に使用・構造上必須）
   url: "https://your-domain.com",
-  // TODO: 公開前に最終確認（プレースホルダー）
-  email: "tamayama2201@gmail.com",
+  // email は未設定のため省略。設定すると Contact / JSON-LD に自動表示されます。
   location: "Japan",
-  /** Availability flag shown in the hero badge. */
   available: true,
-} as const;
+};
 
 /** Primary navigation (in-page anchors). */
 export const nav = [

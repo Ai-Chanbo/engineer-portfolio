@@ -76,15 +76,17 @@ export function Contact() {
           />
 
           <FadeIn className="mt-10 flex flex-col gap-4">
-            <a
-              href={`mailto:${site.email}`}
-              className="group flex items-center gap-3 text-sm text-muted transition-colors hover:text-foreground"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-accent-cyan">
-                <Mail size={17} strokeWidth={1.75} />
-              </span>
-              <span className="font-mono">{site.email}</span>
-            </a>
+            {site.email && (
+              <a
+                href={`mailto:${site.email}`}
+                className="group flex items-center gap-3 text-sm text-muted transition-colors hover:text-foreground"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-accent-cyan">
+                  <Mail size={17} strokeWidth={1.75} />
+                </span>
+                <span className="font-mono">{site.email}</span>
+              </a>
+            )}
             <div className="flex items-center gap-3 text-sm text-muted">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-accent-cyan">
                 <MapPin size={17} strokeWidth={1.75} />
@@ -93,24 +95,26 @@ export function Contact() {
             </div>
           </FadeIn>
 
-          <FadeIn className="mt-8 flex flex-wrap gap-2.5">
-            {socialProfiles.map((p) => {
-              const meta = platformMeta[p.platform];
-              const { Icon } = meta;
-              return (
-                <a
-                  key={p.platform}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={meta.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:text-foreground"
-                >
-                  <Icon size={16} />
-                </a>
-              );
-            })}
-          </FadeIn>
+          {socialProfiles.length > 0 && (
+            <FadeIn className="mt-8 flex flex-wrap gap-2.5">
+              {socialProfiles.map((p) => {
+                const meta = platformMeta[p.platform];
+                const { Icon } = meta;
+                return (
+                  <a
+                    key={p.platform}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={meta.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:text-foreground"
+                  >
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
+            </FadeIn>
+          )}
         </div>
 
         {/* Right: form / success */}

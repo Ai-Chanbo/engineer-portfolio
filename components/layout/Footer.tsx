@@ -43,6 +43,7 @@ export function Footer() {
               ))}
             </nav>
 
+            {socialProfiles.length > 0 && (
             <div className="flex flex-col gap-3">
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
                 Connect
@@ -66,6 +67,7 @@ export function Footer() {
                 })}
               </div>
             </div>
+            )}
           </div>
         </div>
 

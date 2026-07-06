@@ -45,7 +45,7 @@ export const projects: Project[] = [
       "推論プロバイダを自動選択し、環境を問わず安定稼働",
       "現場の稼働を止めない自動再接続・エラーハンドリング",
     ],
-    github: "https://github.com/yourname/ai-visual-inspection", // TODO: 実URL
+    // github 未設定 → GitHubボタンは非表示（#19 未提供）。URLを入れると自動表示。
   },
   {
     slug: "plc-temperature-monitoring",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
       "時系列データを蓄積し、異常検知・傾向分析の基盤に",
       "自動再接続で通信断が起きても収集を継続",
     ],
-    github: "https://github.com/yourname/plc-temperature-monitoring", // TODO: 実URL
+    // github 未設定 → GitHubボタンは非表示（#23 未提供）。URLを入れると自動表示。
   },
 ];
 

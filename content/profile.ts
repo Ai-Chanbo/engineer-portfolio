@@ -27,7 +27,7 @@ export const profileIntro =
 /** Career timeline — oldest → newest. */
 export const timeline: TimelineEntry[] = [
   {
-    period: "2013 – 2024", // TODO: 実際の年次に差し替え
+    period: "2011 – 2022",
     title: "工場設備の保全エンジニア",
     org: "製造業（工場保全）",
     description:
@@ -35,7 +35,7 @@ export const timeline: TimelineEntry[] = [
     tags: ["設備保全", "PLC", "現場改善", "トラブルシューティング"],
   },
   {
-    period: "2023 – ", // TODO: 実際の年次に差し替え
+    period: "2022 – 現在",
     title: "システム開発への転身",
     org: "独学 / 実務",
     description:
@@ -117,11 +117,11 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-/** Certifications. TODO: 実際の保有資格に差し替え。 */
-export const certifications: Certification[] = [
-  { name: "（保有資格を記載）", issuer: "—", year: "—" },
-  { name: "（保有資格を記載）", issuer: "—", year: "—" },
-];
+/**
+ * Certifications. 空配列のあいだ Certifications セクションは非表示になります（#13「なし」）。
+ * 資格を追加すると自動的に表示されます。
+ */
+export const certifications: Certification[] = [];
 
 /** Convenience re-export for icon typing checks. */
 export type { LucideIcon };
