@@ -33,7 +33,7 @@ export const site: SiteConfig = {
   description:
     "工場保全11年の現場経験を土台に、C#・PLC・Azure・AIを活用して、製造業のDXと業務改善を支援するエンジニアです。",
   // TODO(#7): Vercel公開後に本番URLへ差し替え（OGP/sitemap/canonical に使用・構造上必須）
-  url: "https://your-domain.com",
+  url: "https://engineer-portfolio-virid.vercel.app",
   // email は未設定のため省略。設定すると Contact / JSON-LD に自動表示されます。
   location: "Japan",
   available: true,
