@@ -1,5 +1,5 @@
 import { site } from "@/content/site";
-import { socialProfiles } from "@/content/articles";
+import { visibleSocialProfiles } from "@/content/articles";
 
 /**
  * Person + WebSite structured data for rich search results.
@@ -21,8 +21,8 @@ export function JsonLd() {
           "@type": "PostalAddress",
           addressCountry: site.location,
         },
-        ...(socialProfiles.length
-          ? { sameAs: socialProfiles.map((p) => p.url) }
+        ...(visibleSocialProfiles.length
+          ? { sameAs: visibleSocialProfiles.map((p) => p.url) }
           : {}),
         knowsAbout: [
           "C#",

@@ -24,7 +24,24 @@ export const articles: Article[] = [];
 
 /**
  * Profiles shown in the "follow" row / Contact / Footer.
- * 現在は実アカウント未提供のため空です（#27–30）。空のあいだ関連UIは非表示。
- * 追加例: { platform: "x", handle: "@handle", url: "https://x.com/handle" }
+ *
+ * `url` を設定したサービスだけが表示されます（未設定＝自動的に非表示）。
+ * `handle` と `label` は content 側で管理し、URLからは自動生成しません。
+ * X / LinkedIn / note は実URLが決まり次第、下のコメントを有効化してください。
  */
-export const socialProfiles: SocialProfile[] = [];
+export const socialProfiles: SocialProfile[] = [
+  {
+    platform: "github",
+    label: "GitHub",
+    handle: "@Ai-Chanbo",
+    url: "https://github.com/Ai-Chanbo",
+  },
+  // { platform: "x", label: "X", handle: "@your_handle", url: "https://x.com/your_handle" },
+  // { platform: "linkedin", label: "LinkedIn", handle: "in/your-id", url: "https://www.linkedin.com/in/your-id/" },
+  // { platform: "note", label: "note", handle: "@your_account", url: "https://note.com/your_account" },
+];
+
+/** Only profiles with a real URL are rendered anywhere on the site. */
+export const visibleSocialProfiles = socialProfiles.filter(
+  (p): p is SocialProfile & { url: string } => Boolean(p.url),
+);

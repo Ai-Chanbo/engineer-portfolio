@@ -1,6 +1,6 @@
 import { ArrowUp } from "lucide-react";
 import { site, nav } from "@/content/site";
-import { socialProfiles } from "@/content/articles";
+import { visibleSocialProfiles } from "@/content/articles";
 import { platformMeta } from "@/components/articles/platformMeta";
 
 export function Footer() {
@@ -43,13 +43,13 @@ export function Footer() {
               ))}
             </nav>
 
-            {socialProfiles.length > 0 && (
+            {visibleSocialProfiles.length > 0 && (
             <div className="flex flex-col gap-3">
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
                 Connect
               </span>
               <div className="flex gap-2.5">
-                {socialProfiles.map((p) => {
+                {visibleSocialProfiles.map((p) => {
                   const meta = platformMeta[p.platform];
                   const { Icon } = meta;
                   return (
@@ -58,7 +58,7 @@ export function Footer() {
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={meta.label}
+                      aria-label={p.label ?? meta.label}
                       className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:text-foreground"
                     >
                       <Icon size={15} />

@@ -93,6 +93,10 @@ export type Article = {
 /** A social / publishing profile for the "follow" row. */
 export type SocialProfile = {
   platform: Platform;
+  /** Display label managed in content (falls back to platformMeta). */
+  label?: string;
+  /** Handle shown in the follow row, e.g. "@Ai-Chanbo". Managed in content. */
   handle: string;
-  url: string;
+  /** Omit while the real URL is not set — the profile is then auto-hidden. */
+  url?: string;
 };

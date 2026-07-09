@@ -8,7 +8,7 @@ import { Mail, MapPin, Check, Loader2, ArrowRight } from "lucide-react";
 import { contactSchema, type ContactInput } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
-import { socialProfiles } from "@/content/articles";
+import { visibleSocialProfiles } from "@/content/articles";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -95,9 +95,9 @@ export function Contact() {
             </div>
           </FadeIn>
 
-          {socialProfiles.length > 0 && (
+          {visibleSocialProfiles.length > 0 && (
             <FadeIn className="mt-8 flex flex-wrap gap-2.5">
-              {socialProfiles.map((p) => {
+              {visibleSocialProfiles.map((p) => {
                 const meta = platformMeta[p.platform];
                 const { Icon } = meta;
                 return (
@@ -106,7 +106,7 @@ export function Contact() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={meta.label}
+                    aria-label={p.label ?? meta.label}
                     className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:text-foreground"
                   >
                     <Icon size={16} />

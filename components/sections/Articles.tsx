@@ -3,11 +3,11 @@ import { SectionHeading } from "@/components/motion/SectionHeading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { platformMeta } from "@/components/articles/platformMeta";
-import { articles, socialProfiles } from "@/content/articles";
+import { articles, visibleSocialProfiles } from "@/content/articles";
 
 export function Articles() {
   const hasArticles = articles.length > 0;
-  const hasSocials = socialProfiles.length > 0;
+  const hasSocials = visibleSocialProfiles.length > 0;
 
   return (
     <section
@@ -29,7 +29,7 @@ export function Articles() {
         {/* Follow row — hidden until profiles are configured */}
         {hasSocials && (
           <FadeIn className="flex flex-wrap gap-2.5">
-            {socialProfiles.map((p) => {
+            {visibleSocialProfiles.map((p) => {
               const meta = platformMeta[p.platform];
               const { Icon } = meta;
               return (
