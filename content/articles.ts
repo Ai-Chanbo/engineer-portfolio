@@ -31,14 +31,29 @@ export const articles: Article[] = [];
  */
 export const socialProfiles: SocialProfile[] = [
   {
+    platform: "x",
+    label: "X",
+    handle: "@linku0717",
+    url: "https://x.com/linku0717",
+  },
+  {
+    platform: "linkedin",
+    label: "LinkedIn",
+    handle: "in/大和-玉置",
+    url: "https://www.linkedin.com/in/%E5%A4%A7%E5%92%8C-%E7%8E%89%E7%BD%AE-38444a335/",
+  },
+  {
+    platform: "note",
+    label: "note",
+    handle: "@chanbo2201",
+    url: "https://note.com/chanbo2201",
+  },
+  {
     platform: "github",
     label: "GitHub",
     handle: "@Ai-Chanbo",
     url: "https://github.com/Ai-Chanbo",
   },
-  // { platform: "x", label: "X", handle: "@your_handle", url: "https://x.com/your_handle" },
-  // { platform: "linkedin", label: "LinkedIn", handle: "in/your-id", url: "https://www.linkedin.com/in/your-id/" },
-  // { platform: "note", label: "note", handle: "@your_account", url: "https://note.com/your_account" },
 ];
 
 /** Only profiles with a real URL are rendered anywhere on the site. */
