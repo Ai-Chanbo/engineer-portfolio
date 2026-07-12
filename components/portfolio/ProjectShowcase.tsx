@@ -41,7 +41,7 @@ export function ProjectShowcase({ project }: { project: Project }) {
       <FadeIn y={28} className="mt-10">
         <div className="relative">
           <div className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] blur-2xl" />
-          <TiltCard className="rounded-xl">
+          <TiltCard className="rounded-xl" max={4}>
             <div className="overflow-hidden rounded-xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] ring-1 ring-line [transform:translateZ(0)]">
               <ProjectVisual variant={project.visual} title={project.title} />
             </div>

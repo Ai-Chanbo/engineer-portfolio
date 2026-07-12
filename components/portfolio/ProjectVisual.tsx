@@ -1,11 +1,12 @@
 import { cn } from "@/lib/utils";
+import { InspectionDashboard } from "./inspection/InspectionDashboard";
 
 /**
  * Placeholder "product screenshot" rendered in code so the portfolio never
  * looks empty before real captures exist. Two on-topic variants:
- *  - inspection: a camera grid with OK/NG verdicts
+ *  - inspection: a live AI inspection dashboard (see ./inspection)
  *  - monitoring: a temperature line chart with stat tiles
- * Swap for a real <Image> when screenshots are available.
+ * ProjectVisual only switches between variants and provides the window frame.
  */
 export function ProjectVisual({
   variant,
@@ -16,10 +17,24 @@ export function ProjectVisual({
   title: string;
   className?: string;
 }) {
+  if (variant === "inspection") {
+    return (
+      <div
+        className={cn(
+          "relative w-full overflow-hidden rounded-xl border border-line bg-[#0c0c0f]",
+          className,
+        )}
+      >
+        <InspectionDashboard />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(34,211,238,0.12),transparent)]" />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
-        "relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line bg-[#0c0c0f]",
+        "relative w-full overflow-hidden rounded-xl border border-line bg-[#0c0c0f]",
         className,
       )}
     >
@@ -31,88 +46,11 @@ export function ProjectVisual({
         <span className="ml-3 font-mono text-[11px] text-subtle">{title}</span>
       </div>
 
-      <div className="p-4 sm:p-6">
-        {variant === "inspection" ? <InspectionMock /> : <MonitoringMock />}
+      <div className="p-4 sm:p-5">
+        <MonitoringMock />
       </div>
 
-      {/* subtle top glow */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(59,130,246,0.15),transparent)]" />
-    </div>
-  );
-}
-
-function InspectionMock() {
-  // Deterministic pattern: mostly OK with one NG.
-  const cells = [
-    "ok", "ok", "ok", "ok",
-    "ok", "ng", "ok", "ok",
-    "ok", "ok", "ok", "ok",
-  ] as const;
-
-  return (
-    <div className="grid grid-cols-[1fr_auto] gap-4">
-      <div className="grid grid-cols-4 gap-2.5">
-        {cells.map((c, i) => (
-          <div
-            key={i}
-            className={cn(
-              "relative flex aspect-square items-center justify-center rounded-md border text-[10px] font-medium",
-              c === "ok"
-                ? "border-emerald-400/20 bg-emerald-400/[0.06] text-emerald-300"
-                : "border-red-400/30 bg-red-400/[0.10] text-red-300",
-            )}
-          >
-            <span
-              className="absolute inset-1 rounded-[3px] opacity-40"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, rgba(255,255,255,0.06) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.06) 75%, transparent 75%)",
-                backgroundSize: "8px 8px",
-              }}
-            />
-            <span className="relative">{c === "ok" ? "OK" : "NG"}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Verdict panel */}
-      <div className="flex w-24 flex-col justify-between rounded-lg border border-line bg-white/[0.02] p-3">
-        <div>
-          <div className="font-mono text-[9px] uppercase tracking-wide text-subtle">
-            Result
-          </div>
-          <div className="mt-1 text-lg font-semibold text-emerald-300">PASS</div>
-        </div>
-        <div className="space-y-1.5">
-          <StatRow label="検査" value="12" />
-          <StatRow label="NG" value="1" accent />
-          <StatRow label="ms" value="38" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function StatRow({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: string;
-  accent?: boolean;
-}) {
-  return (
-    <div className="flex items-baseline justify-between">
-      <span className="text-[9px] text-subtle">{label}</span>
-      <span
-        className={cn(
-          "font-mono text-xs",
-          accent ? "text-red-300" : "text-foreground",
-        )}
-      >
-        {value}
-      </span>
     </div>
   );
 }
