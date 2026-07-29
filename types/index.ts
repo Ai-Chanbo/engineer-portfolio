@@ -72,6 +72,8 @@ export type Project = {
   highlights: string[];
   github?: string;
   demo?: string;
+  /** 詳細ページ末尾の相談CTAで表示する、作品固有の課題文。未設定ならCTAは非表示。 */
+  consultPrompt?: string;
 };
 
 /** Supported publishing platforms. */
