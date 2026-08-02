@@ -5,12 +5,14 @@ import { Portfolio } from "@/components/sections/Portfolio";
 import { Articles } from "@/components/sections/Articles";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollToHash } from "@/components/layout/ScrollToHash";
 import { JsonLd } from "@/components/JsonLd";
 
 export default function Home() {
   return (
     <>
       <JsonLd />
+      <ScrollToHash />
       <Header />
       <main>
         <Hero />

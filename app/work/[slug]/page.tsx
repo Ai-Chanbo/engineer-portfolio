@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { GitHubIcon } from "@/components/icons/brand";
 import { projects, getProject } from "@/content/projects";
 import { site } from "@/content/site";
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
 import { ArchitectureDiagram } from "@/components/portfolio/ArchitectureDiagram";
+import { ContactCTAButton } from "@/components/cta/ContactCTAButton";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -131,6 +132,32 @@ export default async function WorkDetailPage({ params }: Params) {
             </Button>
           </a>
         </div>
+      )}
+
+      {/* 相談CTA — 詳細を読み終えた訪問者を Contact へ誘導（consultPrompt がある作品のみ） */}
+      {project.consultPrompt && (
+        <aside className="mt-16 rounded-2xl border border-line bg-card/40 p-6 sm:p-8">
+          <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+            このような課題をご相談ください
+          </h2>
+          <p className="mt-4 text-pretty font-jp text-sm leading-relaxed text-foreground/90">
+            {project.consultPrompt}
+          </p>
+          <p className="mt-3 text-pretty font-jp text-sm leading-relaxed text-muted">
+            要件が固まっていない段階でも、現場課題の整理からご相談いただけます。
+          </p>
+          <div className="mt-6">
+            <ContactCTAButton
+              href="/#contact"
+              variant="accent"
+              size="md"
+              className="w-full sm:w-auto"
+            >
+              類似システムについて相談する
+              <ArrowRight size={16} />
+            </ContactCTAButton>
+          </div>
+        </aside>
       )}
     </main>
   );
